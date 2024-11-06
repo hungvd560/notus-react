@@ -1,16 +1,16 @@
 name: Deploy static
 on:
-  workflow_dispach: *
+  workflow_dispatch: 
 
-job:
+jobs:
   deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:
       id-token: write
-      contens: read
+      contents: read
 
-    step:
+    steps:
       # - name: Configure aws credentials
       #   uses: aws-action/configure-aws-credentials@v3.0.2
       #   with:
@@ -22,13 +22,13 @@ job:
         uses: actions/checkout@v3.5.3
 
       - name: Install dependencies
-        uses: npm install
+        run: npm install
 
       - name: Build
-        uses: npm run build
+        run: npm run build
         
       - name: Deploy
-        uses: aws s3 sync .build s3://hungvd7501_bucket
+        run: aws s3 sync .build s3://hungvd7501_bucket
       
         
           
