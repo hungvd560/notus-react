@@ -1,6 +1,6 @@
 name: Deploy static
 on:
-  workflow_dispach:
+  workflow_dispach: *
 
 job:
   deploy:
